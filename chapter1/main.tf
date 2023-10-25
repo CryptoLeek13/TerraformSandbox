@@ -6,7 +6,27 @@ resource "aws_instance" "exampleec2" {
   ami           = "ami-0fa399d9c130ec923"
   instance_type = "t2.micro"
 
+  user_data = <<-EOF
+              #!/bin/bash
+              echo "Hello, Malik" > index.html
+              nohup busybox httpd -f -p 8080 &
+              EOF
+
+  user_data_replace_on_change = true
+
+
   tags = {
     Name = "Terraform-Example-EC2"
+  }
+}
+
+resource "aws_security_group" "terraform-example-sg" {
+  name = "terraform-example-sg"
+
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
