@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "exampleec2" {
-  ami                    = "ami-0fa399d9c130ec923"
+  ami                    = "ami-0e83be366243f524a"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.terraform-example-sg.id]
   user_data              = <<-EOF
