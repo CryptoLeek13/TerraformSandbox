@@ -36,9 +36,9 @@ variable "object_example" {
   })
 
   default = {
-    name = "Malik"
-    age  = 27
-    tags = ["Software-Engineer", "DevOps-Engineer", "Baseball-Player"]
+    name    = "Malik"
+    age     = 27
+    tags    = ["Software-Engineer", "DevOps-Engineer", "Baseball-Player"]
+    enabled = true
   }
 }
-
